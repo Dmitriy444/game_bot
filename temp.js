@@ -15,20 +15,24 @@ let game = function() {
     let isNum = function(n){
         return !isNaN(parseFloat(n)) && isFinite(n);
     };
-
-    if (question == isNum) {
+    function getNum(question){
+    if (question != isNum) {
         alert('Введите число!');
-     } else if (randomNum == question && question == isNum) {
+     } else if (question == isNum) {
+
+       if (randomNum == question) {
         alert('Поздравляю, Вы угадали!!!');
-    } else if (question == isNum && question < randomNum) {
+    } else if (question < randomNum) {
         alert('Загаданное число больше');
         game();
     } else if (question === 0) {
         alert('Конец игры.');
-    } else if (question == isNum && question > randomNum) {
+    } else if (question > randomNum) {
         alert('Загаданное число меньше');
         game();
+            }
+        }
     }
-    
+    getNum(question);
 };
 game();
