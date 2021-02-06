@@ -1,38 +1,40 @@
 'use strict';
 
 let game = function() {
-    let randomNum = getRandomInt();
+    
+
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
     }
-    console.log(getRandomInt(50, 50));
+    //console.log(getRandomInt(1, 100));
+    
+    //let randomNum = Number(getRandomInt());
 
-    console.log(typeof randomNum);
+    function getNum(){
+        
+        let question = +prompt('Угадай число от 1 до 100');
+        let randomNum = getRandomInt(1, 100);
 
-    let question = +prompt('Угадай число от 1 до 100');
-    console.log(typeof question);
- 
-    let isNum = function(n){
-        return !isNaN(parseFloat(n)) && isFinite(n);
-    };
-    function getNum(question){
-    if (question != isNum) {
-        alert('Введите число!');
-     } else if (question == isNum) {
-
-       if (randomNum == question) {
-        alert('Поздравляю, Вы угадали!!!');
-    } else if (question < randomNum) {
-        alert('Загаданное число больше');
-        game();
-    } else if (question === 0) {
-        alert('Конец игры.');
-    } else if (question > randomNum) {
-        alert('Загаданное число меньше');
-        game();
-            }
+        if (isNaN(question)) {
+            alert('Введите число!');
+        getNum();
+        } else if (question === randomNum) {
+            alert('Поздравляю, Вы угадали!!!');
+        } else if (question > 0 && question < randomNum) {
+            alert('Загаданное число больше');
+        getNum();
+        } else if (question === 0) {
+            alert('Конец игры.');
+        } else if (question < 101 && question > randomNum) {
+            alert('Загаданное число меньше');
+        getNum();
+            } 
+            
+        
+        console.log(typeof question);
         }
-    }
-    getNum(question);
+        
+    getNum();
+
 };
 game();
